@@ -2,21 +2,20 @@ import React from "react";
 import Sketch from "react-p5";
 import App from './App';
 import { styled } from '@mui/material/styles';
-//import AlgosImport, { Algos } from './Algorithms/algos'
+import { selectionSort } from './Algorithms/selection-sort'
+
 import PersistentDrawerLeft from "./sidedrawer";
 
+let frames = [];
+let lastFrame = 0;
+let values = [];
+let i = 0;
+let j = 0;
+let k = 255;
+let frame = 0;
+let algos;
 
-
-export default (props) => {
-    let frames = [];
-    let lastFrame = 0;
-    let values = [];
-    let i = 0;
-    let j = 0;
-    let k = 255;
-    let frame = 0;
-    let algos;
-    
+/*
 function selectionSort(frame) {
     let f = 0;
     let tempValues = [...values];
@@ -38,7 +37,6 @@ function selectionSort(frame) {
         tempValues[i] = tmp;
 
         frames.push(tempValues);
-        //console.log(frames[f]);
         if(f === frame){
             return tempValues;
         }
@@ -46,6 +44,11 @@ function selectionSort(frame) {
         
     }
 }
+*/
+export default (props) => {
+
+    
+
 	const setup = (p5, App) => {
         
 		// use parent to render the canvas in this ref
@@ -54,16 +57,13 @@ function selectionSort(frame) {
         //width is window width minus (drawer width + editor width)
 		p5.createCanvas(p5.windowWidth-(795), 500).parent(App);
         p5.background(25);
-        //console.log(PersistentDrawerLeft.);
-        p5.frameRate(15);
+        p5.frameRate(25);
 
         generateRandomArray(p5);
         frame = 0;
 
-        //algos = new Algos(1, values, frames);
-        selectionSort(values);
-        //frames = algos._frames;
-        //console.log(frames[139]);
+       frames = selectionSort(values);
+
 	};
 
     const generateRandomArray = (p5) => {
@@ -73,15 +73,20 @@ function selectionSort(frame) {
     };
 
     const drawArray = (p5) => {
+        let thisFrame;
         p5.background(25);
-        let thisFrame = selectionSort(frame);
-        if(thisFrame === -1){
-            thisFrame = selectionSort(frame-2);
+        if(frame !== values.length){
+            thisFrame = frames[frame];
+            frame++;
+
+        }
+        else{
+            thisFrame = frames[frame-2];
+
         }
        console.log(thisFrame);
 
-        frame++;
-        for(let i = 0; i< thisFrame.length; i++){
+        for(let i = 0; i< frames.length; i++){
             p5.stroke("0");
             p5.fill(k);
             k += 10;
@@ -91,7 +96,7 @@ function selectionSort(frame) {
     };
 
     const draw = (p5) => {
-        if(frames != values.length) drawArray(p5);
+        drawArray(p5);
 
     };
 
