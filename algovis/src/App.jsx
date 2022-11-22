@@ -3,7 +3,8 @@ import AceEditor from "react-ace";
 import classes from "./styles";
 import PersistentDrawerLeft from "./sidedrawer";
 import Sketch1 from "./sketch";
-
+import { selectionSort } from './Algorithms/selectionSort'
+import { bubbleSort } from './Algorithms/bubbleSort'
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
@@ -41,28 +42,35 @@ const darkTheme = createTheme({
       mode: 'dark',
     },
   });
-  
+
 const App = () => {
     const editorRef = useRef(null);
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
-  
+
+    const [data, setData] = useState('');
+
+    const selectAlgo = (algo) => {
+       setData(algo);
+    }
     useLayoutEffect(() => {
       setWidth(editorRef.current.offsetWidth);
       setHeight(editorRef.current.offsetHeight);
     }, []);
+    console.log(data);
+    let stuff = data[1];
   return (
     <>
         <ThemeProvider theme={darkTheme}>
 
       <CssBaseline />
-        <PersistentDrawerLeft/>
+        <PersistentDrawerLeft selectAlgo = {selectAlgo}/>
       <main>
         <div style={classes.root}>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={1}>
               <Grid item xs={8}>
-                <Sketch1 style={classes.canvas}/>
+                <Sketch1 style={classes.canvas} selection = {data[0]}/>
               </Grid>
               <Grid item xs={4}>
                 <Paper >
@@ -71,7 +79,8 @@ const App = () => {
                     mode="javascript"
                     theme="monokai"
                     onChange={onChange}
-                    height='500px'
+                    value= {String(stuff)}
+                    height='560px'
                     width='98%'
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}

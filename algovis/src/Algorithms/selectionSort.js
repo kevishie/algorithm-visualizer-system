@@ -1,9 +1,4 @@
-import React from "react";
-import Sketch from "react-p5";
-import p5 from "p5";
-
-    export function selectionSort(array){
-        
+export function selectionSort(array){
         let arrays = [];
         arrays.push(array.slice(0));
         for (let i=0; i<array.length; i++) {
@@ -20,3 +15,5 @@ import p5 from "p5";
         }
         return arrays; // Returns array iteration history.
     }
+
+    export const name = "Selection Sort";

@@ -1,4 +1,4 @@
-function bubbleSort(array) {
+export function bubbleSort(array) {
     let arrays = [];
     arrays.push(array.slice(0));
     for (let i=0; i<array.length; i++) {
@@ -14,3 +14,5 @@ function bubbleSort(array) {
     }
     return arrays; // Returns array iteration history.
   }
+
+  export const name = "Bubble Sort";

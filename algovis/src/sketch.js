@@ -1,54 +1,50 @@
 import React from "react";
 import Sketch from "react-p5";
 import App from './App';
-import { styled } from '@mui/material/styles';
-import { selectionSort } from './Algorithms/selection-sort'
-
-import PersistentDrawerLeft from "./sidedrawer";
+import { runAlgorithm } from "./runAlgo";
 
 let frames = [];
-let lastFrame = 0;
 let values = [];
-let i = 0;
-let j = 0;
 let k = 255;
 let frame = 0;
-let algos;
+let oldSelection;
 
-/*
-function selectionSort(frame) {
-    let f = 0;
-    let tempValues = [...values];
-    if(frame === tempValues.length){
-        return tempValues;
+const drawArray = (p5) => {
+    let thisFrame;
+    p5.background(25);
+    if(frame !== values.length){
+        thisFrame = frames[frame];
+        frame++;
+
     }
-    for (let i = 0; i < tempValues.length - 1; i++) {
+    else{
+        thisFrame = frames[frame-1];
 
-        let minIndex = i;
+    }
 
-        for (let j = i + 1; j < tempValues.length; j++) {
-            if (tempValues[j] < tempValues[minIndex]) {
-                minIndex = j;
-            }
+    for(let i = 0; i< frames.length; i++){
+        p5.stroke("0");
+        p5.fill(k);
+        k += 10;
+        p5.rect(i*8 , p5.height, 8, -thisFrame[i]);
         }
 
-        let tmp = tempValues[minIndex];
-        tempValues[minIndex] = tempValues[i];
-        tempValues[i] = tmp;
+};
 
-        frames.push(tempValues);
-        if(f === frame){
-            return tempValues;
+const generateRandomArray = (p5, selection) => {
+    frame = 0;
+    values = [];
+    for(let i = 0; i < p5.width/8; i++){
+        values.push(p5.random(p5.height));
         }
-        f++;
-        
-    }
-}
-*/
+        frames = runAlgorithm(selection, values);
+        console.log(selection);
+};
+
 export default (props) => {
 
+    let selection = props.selection;
     
-
 	const setup = (p5, App) => {
         
 		// use parent to render the canvas in this ref
@@ -58,45 +54,23 @@ export default (props) => {
 		p5.createCanvas(p5.windowWidth-(795), 500).parent(App);
         p5.background(25);
         p5.frameRate(25);
-
-        generateRandomArray(p5);
-        frame = 0;
-
-       frames = selectionSort(values);
+               
 
 	};
-
-    const generateRandomArray = (p5) => {
-        for(let i = 0; i < p5.width/8; i++){
-            values.push(p5.random(p5.height));
-            }
-    };
-
-    const drawArray = (p5) => {
-        let thisFrame;
-        p5.background(25);
-        if(frame !== values.length){
-            thisFrame = frames[frame];
-            frame++;
-
-        }
-        else{
-            thisFrame = frames[frame-2];
-
-        }
-       console.log(thisFrame);
-
-        for(let i = 0; i< frames.length; i++){
-            p5.stroke("0");
-            p5.fill(k);
-            k += 10;
-            p5.rect(i*8 , p5.height, 8, -thisFrame[i]);
-            }
-
-    };
-
     const draw = (p5) => {
-        drawArray(p5);
+        p5.resizeCanvas(p5.windowWidth*.59, p5.windowHeight*.6);
+
+        if(selection !== oldSelection){
+            console.log(selection ," ",oldSelection);
+            p5.setup();
+            generateRandomArray(p5, selection);
+            oldSelection = selection;
+
+        }else{
+                drawArray(p5);
+            }
+        
+
 
     };
 

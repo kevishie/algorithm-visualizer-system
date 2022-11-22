@@ -9,7 +9,139 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
-import CustomizedAccordions from './algodrawercontent';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import { useState } from "react";
+import { selectionSort } from './Algorithms/selectionSort';
+import { bubbleSort } from './Algorithms/bubbleSort';
+
+
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  '&:not(:last-child)': {
+    borderBottom: 0,
+  },
+  '&:before': {
+    display: 'none',
+  },
+}));
+
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, .05)'
+      : 'rgba(0, 0, 0, .03)',
+  flexDirection: 'row-reverse',
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(90deg)',
+  },
+  '& .MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: '1px solid rgba(0, 0, 0, .125)',
+}));
+let selection;
+
+
+const sendData = () =>{
+  this.props.parentCallback(selection)
+}
+
+ function CustomizedAccordions({childToParent}) {
+  const [expanded, setExpanded] = React.useState('panel1');
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
+  return (
+    <div>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography>Sorting Algorithms</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          >
+        <ListItemButton onClick={() => childToParent(["selectionSort", selectionSort])}>
+            <ListItemText primary="Selection Sort" />
+        </ListItemButton>
+      <ListItemButton onClick = {() => childToParent(["bubbleSort", bubbleSort])}>
+            <ListItemText primary="Bubble Sort" />
+      </ListItemButton>
+          </List>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+          <Typography>Searching Algorithms</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <ListItemButton>
+            <ListItemText primary="Sequential Search" />
+        </ListItemButton>
+      <ListItemButton>
+            <ListItemText primary="Binary Search" />
+      </ListItemButton>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+          <Typography>Dynamic Programming Algorithms</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          
+          
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
+          <Typography>Recursive Algorithms</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+         
+         
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Main = styled('main')(
     ({ theme, open }) => ({
@@ -40,8 +172,13 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
   }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft({selectAlgo}) {
+  const [data, setData] = useState('');
 
+  const childToParent = (childdata) => {
+    setData(childdata);
+    selectAlgo(childdata);
+  }
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -70,7 +207,7 @@ export default function PersistentDrawerLeft() {
           
         </DrawerHeader>
         <Divider />
-       <CustomizedAccordions/>
+       <CustomizedAccordions childToParent={childToParent}/>
         <Divider />
       </Drawer>
       <Main >
