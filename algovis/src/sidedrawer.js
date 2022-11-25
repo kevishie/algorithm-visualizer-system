@@ -18,6 +18,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { useState } from "react";
 import { selectionSort } from './Algorithms/selectionSort';
 import { bubbleSort } from './Algorithms/bubbleSort';
+import { insertionSort } from './Algorithms/insertionsort';
 
 
 
@@ -87,6 +88,9 @@ const sendData = () =>{
         </ListItemButton>
       <ListItemButton onClick = {() => childToParent(["bubbleSort", bubbleSort])}>
             <ListItemText primary="Bubble Sort" />
+      </ListItemButton>
+      <ListItemButton onClick = {() => childToParent(["insertionSort", insertionSort])}>
+            <ListItemText primary="Insertion Sort" />
       </ListItemButton>
           </List>
         </AccordionDetails>

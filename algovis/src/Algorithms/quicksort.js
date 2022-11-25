@@ -43,12 +43,15 @@ function quickSortInner(items,arrays, left, right) {
     return items;
 }
 //Main algorithm funciton to run with visualizer
-function quickSort(array){
+export function quickSort(array){
     var arrays = [];
     quickSortInner(array,arrays, 0, array.length - 1);
     
     return arrays;
 }
+
+
+export const name = "Quick Sort";
 
 
 
