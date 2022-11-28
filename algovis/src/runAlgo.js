@@ -5,6 +5,7 @@ import { oddevensort } from "./Algorithms/oddevensort";
 import { quickSort } from "./Algorithms/quicksort";
 import { bogoSort } from "./Algorithms/bogosort";
 import { mergeSort } from "./Algorithms/mergesort";
+import { shellsort } from "./Algorithms/shellsort";
 
 export function runAlgorithm(selection, values) {
   switch (selection) {
@@ -22,6 +23,8 @@ export function runAlgorithm(selection, values) {
       return bogoSort(values);
     case "mergeSort":
       return mergeSort(values, 0, values.length);
+    case "shellsort":
+      return shellsort(values);
   }
   return;
 }
