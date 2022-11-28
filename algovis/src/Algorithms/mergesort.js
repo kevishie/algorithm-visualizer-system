@@ -9,7 +9,7 @@ function mergeSort(arr, left, right) {
   mergeSort(arr, left, mid); //will mergeSort from the left to the middle index
   mergeSort(arr, mid + 1, right); //will mergeSort from the middle to right index
   merge(arr, left, mid, right); //once recursion is completed then will finally merge the two sorted arrays together
-  arrays.push(array.slice(0));
+  arrays.push(arr.slice(0));
 }
 
 //merge funct
