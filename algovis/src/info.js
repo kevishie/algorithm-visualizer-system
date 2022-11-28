@@ -10,23 +10,24 @@ import { bogoSort } from "./Algorithms/bogosort";
 export function runtime(selection){
     switch(selection){
         case selectionSort:
-            return "selectionruntime";
+            
+            return "Runtime: O(N²)";
         case insertionSort:
-            return "insertionsortruntime";
+            return "Runtime: O(N²)";
         case bubblesort:
-            return "bubblesortRuntime";
+            return "Runtime: O(N²)";
         case oddevensort:
-            return "oddevensortRuntime";
+            return "Runtime: O(N²)";
         case shellsort:
-            return "shellsortruntime";
+            return "Runtime: O(N²)";
         case mergeSort:
-            return "mergesortruntime";
+            return "Runtime: O(N log(N))";
         case heapsort:
-            return "heapsort";
+            return "Runtime: O(N log(N))";
         case bogoSort:
-            return "bogosortruntime"
+            return "Runtime: Worst: O(∞) Average: O(N*N!) Best: O(n)"
         case quickSort:
-            return "quicksortruntime"
+            return "Runtime: O(NLogN)"
     }
 }
 
