@@ -16,13 +16,13 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useState } from "react";
-import { selectionSort } from "./Algorithms/selectionSort?raw";
-import { bubblesort } from "./Algorithms/bubblesort?raw";
-import { insertionSort } from "./Algorithms/insertionsort?raw";
-import { oddevensort } from "./Algorithms/oddevensort?raw";
-import { quickSort } from "./Algorithms/quicksort?raw";
-import { bogoSort } from "./Algorithms/bogosort?raw";
-import { mergeSort } from "./Algorithms/mergesort?raw";
+import { selectionSort } from "./Algorithms/selectionSort";
+import { bubblesort } from "./Algorithms/bubblesort";
+import { insertionSort } from "./Algorithms/insertionsort";
+import { oddevensort } from "./Algorithms/oddevensort";
+import { quickSort } from "./Algorithms/quicksort";
+import { bogoSort } from "./Algorithms/bogosort";
+import { mergeSort } from "./Algorithms/mergesort";
 import { shellsort } from "./Algorithms/shellsort";
 
 const Accordion = styled((props) => (

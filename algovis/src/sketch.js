@@ -7,12 +7,11 @@ let values = [];
 let k = 255;
 let frame = 0;
 let oldSelection;
-let lastPressed = "";
-const drawArray = (p5, b) => {
+let c = 0;
+const drawArray = (p5) => {
   let thisFrame;
   p5.background(25);
-  
-  if (frame !== values.length && typeof frames[frame] !== 'undefined' && b !== "=") {
+  if (frame !== frames.length && typeof frames[frame] !== 'undefined') {
     thisFrame = frames[frame];
     frame++;
   } else {
@@ -38,7 +37,6 @@ const generateRandomArray = (p5, selection) => {
 export default (props) => {
   let selection = props.selection;
   let fr = props.framerate;
-  let b = props.button;
   const setup = (p5, App) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
@@ -46,42 +44,19 @@ export default (props) => {
     //width is window width minus (drawer width + editor width)
     p5.createCanvas(p5.windowWidth - 795, 500).parent(App);
     p5.background(25);
-    p5.frameRate(10);
+    p5.frameRate(25);
   };
   const draw = (p5) => {
     p5.resizeCanvas(p5.windowWidth * 0.59, p5.windowHeight * 0.6);
+
     if (selection !== oldSelection) {
       console.log(selection, " ", oldSelection);
       p5.setup();
       generateRandomArray(p5, selection);
       oldSelection = selection;
-    }
-    if(b !== lastPressed){
-  switch(b){
-    case "=":
-      drawArray(p5, b);
-      break;
-    case ">>":
-      frames = frames.reverse();
-      frame = frames.length - frame;
-      drawArray(p5, b);
-
-      break;
-    case "<<":
-      frames = frames.reverse();
-      frame = frames.length - frame;
-      drawArray(p5, b);
-
-      break;
-    case ">":
+    } else {
       drawArray(p5);
-
-      break;
-  }
-  lastPressed = b;
-}
-console.log(b);
-    drawArray(p5, b);
+    }
     p5.frameRate(fr);
   };
 
