@@ -1,29 +1,27 @@
 //mergeSort funct
 function mergeSort(arr, left, right) {
-  while (left.length && right.left) {
-    if (left > right) {
-      return;
-    }
-
-    let mid = (left + right) / 2; //to get the middle idex
-    mergeSort(arr, left, mid); //will mergeSort from the left to the middle index
-    mergeSort(arr, m + 1, right); //will mergeSort from the middle to right index
-    merge(arr, left, mid, right); //once recursion is completed then will finally merge the two sorted arrays together
+  if (left >= right) {
+    return;
   }
+
+  let mid = left + parseInt((right - left) / 2 ); //to get the middle index
+  mergeSort(arr, left, mid); //will mergeSort from the left to the middle index
+  mergeSort(arr, mid + 1, right); //will mergeSort from the middle to right index
+  merge(arr, left, mid, right); //once recursion is completed then will finally merge the two sorted arrays together
 }
 
 //merge funct
 function merge(arr, left, mid, right) {
-  let n1 = mid - 1 + 1; //size of the left array
+  let n1 = mid - left + 1; //size of the left array
   let n2 = right - mid; //size of the right array
 
   //temporary arrays
-  let tempL = [n1];
-  let tempR = [n2];
+  let tempL = new Array(n1);
+  let tempR = new Array(n2);
 
   //initialize the tempL
   for (let i = 0; i < n1; i++) {
-    tempL[i] = arr[l + i];
+    tempL[i] = arr[left + i];
   }
   //initialize the tempR
   for (let j = 0; j < n2; j++) {
@@ -33,7 +31,7 @@ function merge(arr, left, mid, right) {
   //initial values for the left, right, and arr array
   let i = 0;
   let j = 0;
-  let k = 0;
+  let k = left;
 
   //while loop will merge the left and right arrays into one array.
   while (i < n1 && j < n2) {
