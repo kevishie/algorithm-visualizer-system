@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.js": "/algorithm-visualizer-system/static/js/main.6799f864.js",
-    "index.html": "/algorithm-visualizer-system/index.html",
-    "main.6799f864.js.map": "/algorithm-visualizer-system/static/js/main.6799f864.js.map"
+    "main.js": "/algorithm-visualizer-system/static/js/main.abb318b9.js",
+    "index.html": "/algorithm-visualizer-system/index.html"
   },
   "entrypoints": [
-    "static/js/main.6799f864.js"
+    "static/js/main.abb318b9.js"
   ]
 }
