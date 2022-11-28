@@ -21,7 +21,7 @@ export function runAlgorithm(selection, values) {
     case "bogoSort":
       return bogoSort(values);
     case "mergeSort":
-      return mergeSort(values);
+      return mergeSort(values, 0, values.length);
   }
   return;
 }
