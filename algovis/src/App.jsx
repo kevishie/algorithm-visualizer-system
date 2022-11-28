@@ -3,7 +3,7 @@ import AceEditor from "react-ace";
 import classes from "./styles";
 import PersistentDrawerLeft from "./sidedrawer";
 import Sketch1 from "./sketch";
-
+import { information, runtime } from "./info";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
@@ -71,13 +71,13 @@ const App = () => {
                   <Paper> </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper style={classes.runtime}> Runtime </Paper>
+                  <Paper style={classes.runtime}> {runtime(data[1])} </Paper>
                 </Grid>
                 <Grid item xs={8}>
                   <Paper> </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                  <Paper style={classes.algoinfo}> Algorithm info </Paper>
+                  <Paper style={classes.algoinfo}> {information(data[1])}</Paper>
                 </Grid>
               </Grid>
             </Box>
