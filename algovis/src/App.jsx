@@ -9,6 +9,7 @@ import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { Box, Paper, CssBaseline, Grid } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Slider from "@mui/material/Slider";
 
 function onChange(newValue) {
   console.log("change", newValue);
@@ -23,8 +24,12 @@ const App = () => {
   const editorRef = useRef(null);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-
+  const [value, setValue] = useState();
   const [data, setData] = useState("");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const selectAlgo = (algo) => {
     setData(algo);
@@ -33,7 +38,7 @@ const App = () => {
     setWidth(editorRef.current.offsetWidth);
     setHeight(editorRef.current.offsetHeight);
   }, []);
-  console.log(data);
+  console.log(value);
   let stuff = data[1];
   return (
     <>
@@ -45,7 +50,7 @@ const App = () => {
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={1}>
                 <Grid item xs={8}>
-                  <Sketch1 style={classes.canvas} selection={data[0]} />
+                  <Sketch1 style={classes.canvas} selection={data[0]} framerate={value} />
                 </Grid>
                 <Grid item xs={4}>
                   <Paper>
@@ -68,18 +73,21 @@ const App = () => {
                   </Paper>
                 </Grid>
                 <Grid item xs={8}>
-                  <Paper> </Paper>
+                  <Paper> Framerate<Slider defaultValue={0} value={value} aria-label="Default" valueLabelDisplay="auto"  onChange={handleChange}/> </Paper>
                 </Grid>
                 <Grid item xs={4}>
                   <Paper style={classes.runtime}> {runtime(data[1])} </Paper>
                 </Grid>
                 <Grid item xs={8}>
-                  <Paper> </Paper>
+                  <Paper></Paper>
                 </Grid>
                 <Grid item xs={4}>
                   <Paper style={classes.algoinfo}> {information(data[1])}</Paper>
                 </Grid>
+                
               </Grid>
+
+      
             </Box>
           </div>
         </main>

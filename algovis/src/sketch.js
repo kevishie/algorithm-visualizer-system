@@ -11,13 +11,13 @@ let oldSelection;
 const drawArray = (p5) => {
   let thisFrame;
   p5.background(25);
-  if (frame !== values.length) {
+  if (frame !== values.length && typeof frames[frame] !== 'undefined') {
     thisFrame = frames[frame];
     frame++;
   } else {
     thisFrame = frames[frame - 1];
   }
-
+  
   for (let i = 0; i < frames.length; i++) {
     p5.stroke("0");
     p5.fill(k);
@@ -33,12 +33,12 @@ const generateRandomArray = (p5, selection) => {
     values.push(p5.random(p5.height));
   }
   frames = runAlgorithm(selection, values);
-  console.log(selection);
+ // console.log(selection);
 };
 
 export default (props) => {
   let selection = props.selection;
-
+  let fr = props.framerate;
   const setup = (p5, App) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
@@ -59,6 +59,7 @@ export default (props) => {
     } else {
       drawArray(p5);
     }
+    p5.frameRate(fr);
   };
 
   return <Sketch setup={setup} draw={draw} />;

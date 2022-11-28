@@ -46,7 +46,8 @@ function quickSortInner(items,arrays, left, right) {
 export function quickSort(array){
     var arrays = [];
     quickSortInner(array,arrays, 0, array.length - 1);
-    
+    arrays.pop();
+
     return arrays;
 }
 
