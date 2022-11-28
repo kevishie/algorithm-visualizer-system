@@ -1,6 +1,8 @@
 //mergeSort funct
 function mergeSort(arr, left, right) {
+  let arrays = [];
   if (left >= right) {
+    arrays.push(array.slice(0));
     return;
   }
 
