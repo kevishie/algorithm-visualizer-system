@@ -1,4 +1,4 @@
-export function bubbleSort(array) {
+export function bubblesort(array) {
   let arrays = [];
   arrays.push(array.slice(0));
   for (let i = 0; i < array.length; i++) {

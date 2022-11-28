@@ -1,6 +1,6 @@
 import { selectionSort } from "./Algorithms/selectionSort";
 
-import { bubbleSort } from "./Algorithms/bubbleSort";
+import { bubblesort } from "./Algorithms/bubblesort";
 
 import { insertionSort } from "./Algorithms/insertionsort";
 
@@ -10,8 +10,8 @@ export function runAlgorithm(selection, values) {
   switch (selection) {
     case "selectionSort":
       return selectionSort(values);
-    case "bubbleSort":
-      return bubbleSort(values);
+    case "bubblesort":
+      return bubblesort(values);
     case "insertionSort":
       return insertionSort(values);
     case "oddevensort":

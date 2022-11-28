@@ -17,7 +17,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useState } from "react";
 import { selectionSort } from "./Algorithms/selectionSort";
-import { bubbleSort } from "./Algorithms/bubbleSort";
+import { bubblesort } from "./Algorithms/bubblesort";
 import { insertionSort } from "./Algorithms/insertionsort";
 import { oddevensort } from "./Algorithms/oddevensort";
 
@@ -90,7 +90,7 @@ function CustomizedAccordions({ childToParent }) {
               <ListItemText primary="Selection Sort" />
             </ListItemButton>
             <ListItemButton
-              onClick={() => childToParent(["bubbleSort", bubbleSort])}
+              onClick={() => childToParent(["bubblesort", bubblesort])}
             >
               <ListItemText primary="Bubble Sort" />
             </ListItemButton>
