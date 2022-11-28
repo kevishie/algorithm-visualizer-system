@@ -58,7 +58,7 @@ const App = () => {
 
   }
   console.log('Algorithms/'+data[0]+'.js');
-  window.fetch('/algovis/src/Algorithms/'+data[0]+'.js')
+  let test = fetch('/src/Algorithms/'+data[0]+'.js')
   .then(response => response.text())
   .then(text => console.log(text));
   // outputs the content of the text file
@@ -82,7 +82,7 @@ const App = () => {
                       mode="javascript"
                       theme="monokai"
                       onChange={onChange}
-                      value={String(stuff)}
+                      value={String(test)}
                       height="560px"
                       width="98%"
                       name="UNIQUE_ID_OF_DIV"
