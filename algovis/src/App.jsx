@@ -57,7 +57,12 @@ const App = () => {
     sketch = <Sketch1 style={classes.canvas} selection={data[0]} framerate={value} button = {clicked} />;
 
   }
-  console.log(stuff);
+  console.log('Algorithms/'+data[0]+'.js');
+  window.fetch('/algovis/src/Algorithms/'+data[0]+'.js')
+  .then(response => response.text())
+  .then(text => console.log(text));
+  // outputs the content of the text file
+
   return (
     <>
       <ThemeProvider theme={darkTheme}>
