@@ -100,7 +100,7 @@ function CustomizedAccordions({ childToParent }) {
               <ListItemText primary="Bubble Sort" />
             </ListItemButton>
             <ListItemButton
-              onClick={() => childToParent(["insertionSort", insertionSort])}
+              onClick={() => childToParent(["insertionsort", insertionSort])}
             >
               <ListItemText primary="Insertion Sort" />
             </ListItemButton>
