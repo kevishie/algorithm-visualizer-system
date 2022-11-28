@@ -58,7 +58,7 @@ const App = () => {
 
   }
   console.log('Algorithms/'+data[0]+'.js');
-  let test = fetch('/src/Algorithms/'+data[0]+'.js')
+  let test = window.fetch('/src/Algorithms/'+data[0]+'.js')
   .then(response => response.text())
   .then(text => console.log(text));
   // outputs the content of the text file
