@@ -1,3 +1,5 @@
+export function quickSort(array){
+
 //swaps two items based on the given left and right indicies (needed for partition())
 function swap(items, leftIndex, rightIndex){
     var temp = items[leftIndex];
@@ -43,7 +45,6 @@ function quickSortInner(items,arrays, left, right) {
     return items;
 }
 //Main algorithm funciton to run with visualizer
-export function quickSort(array){
     var arrays = [];
     quickSortInner(array,arrays, 0, array.length - 1);
     arrays.pop();
