@@ -1,5 +1,6 @@
 {
   "name": "algovis",
+  "homepage": "https://kevishie.github.io/algorithm-visualizer-system/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
