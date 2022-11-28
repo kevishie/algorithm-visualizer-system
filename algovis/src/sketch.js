@@ -11,7 +11,7 @@ let lastPressed = "";
 const drawArray = (p5, b) => {
   let thisFrame;
   p5.background(25);
-  if (frame !== values.length && typeof frames[frame] !== 'undefined' && b !== "=") {    thisFrame = frames[frame];
+  if (frame !== frames.length && typeof frames[frame] !== 'undefined' && b !== "=") {    thisFrame = frames[frame];
     frame++;
   } else {
     thisFrame = frames[frame - 1];
