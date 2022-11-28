@@ -1,4 +1,4 @@
-import { selectionSort } from "./Algorithms/selectionSort";
+import { selectionSort } from "./Algorithms/selectionsort";
 import { bubblesort } from "./Algorithms/bubblesort";
 import { insertionSort } from "./Algorithms/insertionsort";
 import { oddevensort } from "./Algorithms/oddevensort";

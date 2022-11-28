@@ -16,7 +16,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useState } from "react";
-import { selectionSort } from "./Algorithms/selectionSort";
+import { selectionSort } from "./Algorithms/selectionsort";
 import { bubblesort } from "./Algorithms/bubblesort";
 import { insertionSort } from "./Algorithms/insertionsort";
 import { oddevensort } from "./Algorithms/oddevensort";
