@@ -1,71 +1,68 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import TextField from '@mui/material/TextField';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import CssBaseline from "@mui/material/CssBaseline";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useState } from "react";
-import { selectionSort } from './Algorithms/selectionSort';
-import { bubbleSort } from './Algorithms/bubbleSort';
-import { insertionSort } from './Algorithms/insertionsort';
-
-
+import { selectionSort } from "./Algorithms/selectionSort";
+import { bubbleSort } from "./Algorithms/bubblesort";
+import { insertionSort } from "./Algorithms/insertionsort";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
-  '&:not(:last-child)': {
+  "&:not(:last-child)": {
     borderBottom: 0,
   },
-  '&:before': {
-    display: 'none',
+  "&:before": {
+    display: "none",
   },
 }));
 
 const AccordionSummary = styled((props) => (
   <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
     {...props}
   />
 ))(({ theme }) => ({
   backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
+    theme.palette.mode === "dark"
+      ? "rgba(255, 255, 255, .05)"
+      : "rgba(0, 0, 0, .03)",
+  flexDirection: "row-reverse",
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(90deg)",
   },
-  '& .MuiAccordionSummary-content': {
+  "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
   },
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
+  borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 let selection;
 
+const sendData = () => {
+  this.props.parentCallback(selection);
+};
 
-const sendData = () =>{
-  this.props.parentCallback(selection)
-}
-
- function CustomizedAccordions({childToParent}) {
-  const [expanded, setExpanded] = React.useState('panel1');
+function CustomizedAccordions({ childToParent }) {
+  const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -73,122 +70,117 @@ const sendData = () =>{
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      <Accordion
+        expanded={expanded === "panel1"}
+        onChange={handleChange("panel1")}
+      >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Sorting Algorithms</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <List
-          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-          component="nav"
-          aria-labelledby="nested-list-subheader"
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            component="nav"
+            aria-labelledby="nested-list-subheader"
           >
-        <ListItemButton onClick={() => childToParent(["selectionSort", selectionSort])}>
-            <ListItemText primary="Selection Sort" />
-        </ListItemButton>
-      <ListItemButton onClick = {() => childToParent(["bubbleSort", bubbleSort])}>
-            <ListItemText primary="Bubble Sort" />
-      </ListItemButton>
-      <ListItemButton onClick = {() => childToParent(["insertionSort", insertionSort])}>
-            <ListItemText primary="Insertion Sort" />
-      </ListItemButton>
+            <ListItemButton
+              onClick={() => childToParent(["selectionSort", selectionSort])}
+            >
+              <ListItemText primary="Selection Sort" />
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => childToParent(["bubbleSort", bubbleSort])}
+            >
+              <ListItemText primary="Bubble Sort" />
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => childToParent(["insertionSort", insertionSort])}
+            >
+              <ListItemText primary="Insertion Sort" />
+            </ListItemButton>
           </List>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+      <Accordion
+        expanded={expanded === "panel2"}
+        onChange={handleChange("panel2")}
+      >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography>Searching Algorithms</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <ListItemButton>
+          <ListItemButton>
             <ListItemText primary="Sequential Search" />
-        </ListItemButton>
-      <ListItemButton>
+          </ListItemButton>
+          <ListItemButton>
             <ListItemText primary="Binary Search" />
-      </ListItemButton>
+          </ListItemButton>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+      <Accordion
+        expanded={expanded === "panel3"}
+        onChange={handleChange("panel3")}
+      >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Dynamic Programming Algorithms</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          
-          
-        </AccordionDetails>
+        <AccordionDetails></AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+      <Accordion
+        expanded={expanded === "panel4"}
+        onChange={handleChange("panel4")}
+      >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
           <Typography>Recursive Algorithms</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-         
-         
-        </AccordionDetails>
+        <AccordionDetails></AccordionDetails>
       </Accordion>
     </div>
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const Main = styled('main')(
-    ({ theme, open }) => ({
-      flexGrow: 1,
-      padding: theme.spacing(1),
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginLeft: `-${drawerWidth}px`,
-      ...(open && {
-        transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
-      }),
+const Main = styled("main")(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(1),
+  transition: theme.transitions.create("margin", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
     }),
-  );
+    marginLeft: 0,
+  }),
+}));
 const drawerWidth = 210;
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'left',
-    position: 'relative',
-    padding: theme.spacing(1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  }));
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "left",
+  position: "relative",
+  padding: theme.spacing(1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+}));
 
-export default function PersistentDrawerLeft({selectAlgo}) {
-  const [data, setData] = useState('');
+export default function PersistentDrawerLeft({ selectAlgo }) {
+  const [data, setData] = useState("");
 
   const childToParent = (childdata) => {
     setData(childdata);
     selectAlgo(childdata);
-  }
+  };
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed"  sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
+      <AppBar
+        position="fixed"
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      >
         <Toolbar>
-        
           <Typography variant="h6" noWrap component="div">
             Algorithm Visualizer
           </Typography>
@@ -198,25 +190,27 @@ export default function PersistentDrawerLeft({selectAlgo}) {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: drawerWidth,
-            boxSizing: 'border-box',
+            boxSizing: "border-box",
           },
         }}
         variant="permanent"
         anchor="left"
       >
         <DrawerHeader>
-        <TextField id="standard-basic" label="Search library" variant="standard"  />
-          
+          <TextField
+            id="standard-basic"
+            label="Search library"
+            variant="standard"
+          />
         </DrawerHeader>
         <Divider />
-       <CustomizedAccordions childToParent={childToParent}/>
+        <CustomizedAccordions childToParent={childToParent} />
         <Divider />
       </Drawer>
-      <Main >
+      <Main>
         <DrawerHeader />
-
       </Main>
     </Box>
   );
