@@ -22,6 +22,7 @@ import { insertionSort } from "./Algorithms/insertionsort";
 import { oddevensort } from "./Algorithms/oddevensort";
 import { quickSort } from "./Algorithms/quicksort";
 import { bogoSort } from "./Algorithms/bogosort";
+import { mergeSort } from "./Algorithms/mergesort";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -104,17 +105,22 @@ function CustomizedAccordions({ childToParent }) {
             <ListItemButton
               onClick={() => childToParent(["oddevensort", oddevensort])}
             >
-              <ListItemText primary="Odd even sort" />
+              <ListItemText primary="Odd Even sort" />
             </ListItemButton>
             <ListItemButton
               onClick={() => childToParent(["quickSort", quickSort])}
             >
-              <ListItemText primary="Quicksort" />
+              <ListItemText primary="Quick Sort" />
             </ListItemButton>
             <ListItemButton
               onClick={() => childToParent(["bogoSort", bogoSort])}
             >
-              <ListItemText primary="Bogo sort" />
+              <ListItemText primary="Bogo Sort" />
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => childToParent(["mergeSort", mergeSort])}
+            >
+              <ListItemText primary="Merge Sort" />
             </ListItemButton>
           </List>
         </AccordionDetails>
