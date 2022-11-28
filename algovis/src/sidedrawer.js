@@ -90,7 +90,7 @@ function CustomizedAccordions({ childToParent }) {
             aria-labelledby="nested-list-subheader"
           >
             <ListItemButton
-              onClick={() => childToParent(["selectionSort", selectionSort])}
+              onClick={() => childToParent(["selectionsort", selectionSort])}
             >
               <ListItemText primary="Selection Sort" />
             </ListItemButton>
@@ -110,7 +110,7 @@ function CustomizedAccordions({ childToParent }) {
               <ListItemText primary="Odd Even sort" />
             </ListItemButton>
             <ListItemButton
-              onClick={() => childToParent(["quickSort", quickSort])}
+              onClick={() => childToParent(["quicksort", quickSort])}
             >
               <ListItemText primary="Quick Sort" />
             </ListItemButton>

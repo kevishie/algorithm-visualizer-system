@@ -10,19 +10,19 @@ import { heapsort } from "./Algorithms/heapsort";
 
 export function runAlgorithm(selection, values) {
   switch (selection) {
-    case "selectionSort":
+    case "selectionsort":
       return selectionSort(values);
     case "bubblesort":
       return bubblesort(values);
-    case "insertionSort":
+    case "insertionsort":
       return insertionSort(values);
     case "oddevensort":
       return oddevensort(values);
-    case "quickSort":
+    case "quicksort":
       return quickSort(values);
-    case "bogoSort":
+    case "bogosort":
       return bogoSort(values);
-    case "mergeSort":
+    case "mergesort":
       return mergeSort(values);
     case "shellsort":
       return shellsort(values);
