@@ -32,6 +32,7 @@ const App = () => {
   const [value, setValue] = useState();
   const [data, setData] = useState("");
   const [clicked, setClicked] = useState();
+  const [editText, setEText] = useState("Write code here!");
   const handleButton = (clicked) => {
     setClicked(clicked);
   }
@@ -46,7 +47,6 @@ const App = () => {
     setWidth(editorRef.current.offsetWidth);
     setHeight(editorRef.current.offsetHeight);
   }, []);
-  console.log(clicked);
   let stuff = "placeholder";
   let sketch;
   if(data[0] === "primsAlgorithm"){
@@ -57,12 +57,12 @@ const App = () => {
     sketch = <Sketch1 style={classes.canvas} selection={data[0]} framerate={value} button = {clicked} />;
 
   }
-  console.log('Algorithms/'+data[0]+'.js');
-  let test = window.fetch('/src/Algorithms/'+data[0]+'.js')
+  if(typeof data[0] !== 'undefined'){
+  window.fetch(process.env.PUBLIC_URL+'/Algorithms/'+data[0]+'.js')
   .then(response => response.text())
-  .then(text => console.log(text));
+  .then(text => setEText(text));
   // outputs the content of the text file
-
+  }
   return (
     <>
       <ThemeProvider theme={darkTheme}>
@@ -82,7 +82,7 @@ const App = () => {
                       mode="javascript"
                       theme="monokai"
                       onChange={onChange}
-                      value={String(test)}
+                      value={editText}
                       height="560px"
                       width="98%"
                       name="UNIQUE_ID_OF_DIV"

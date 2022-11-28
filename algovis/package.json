@@ -48,5 +48,7 @@
   },
   "devDependencies": {
     "rewire": "^6.0.0"
-  }
+  },
+  "build": "GENERATE_SOURCEMAP=false react-scripts build"
+
 }
