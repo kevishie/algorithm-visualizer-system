@@ -2,14 +2,14 @@
 function mergeSort(arr, left, right) {
   let arrays = [];
   if (left >= right) {
-    arrays.push(array.slice(0));
-    return;
+    return arrays;
   }
 
   let mid = left + parseInt((right - left) / 2 ); //to get the middle index
   mergeSort(arr, left, mid); //will mergeSort from the left to the middle index
   mergeSort(arr, mid + 1, right); //will mergeSort from the middle to right index
   merge(arr, left, mid, right); //once recursion is completed then will finally merge the two sorted arrays together
+  arrays.push(array.slice(0));
 }
 
 //merge funct
