@@ -6,6 +6,7 @@ import { quickSort } from "./Algorithms/quicksort";
 import { bogoSort } from "./Algorithms/bogosort";
 import { mergeSort } from "./Algorithms/mergesort";
 import { shellsort } from "./Algorithms/shellsort";
+import { heapsort } from "./Algorithms/heapsort";
 
 export function runAlgorithm(selection, values) {
   switch (selection) {
@@ -22,9 +23,11 @@ export function runAlgorithm(selection, values) {
     case "bogoSort":
       return bogoSort(values);
     case "mergeSort":
-      return mergeSort(values, 0, values.length);
+      return mergeSort(values);
     case "shellsort":
       return shellsort(values);
+    case "heapsort":
+      return heapsort(values);
   }
   return;
 }

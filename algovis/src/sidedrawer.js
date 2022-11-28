@@ -24,6 +24,7 @@ import { quickSort } from "./Algorithms/quicksort";
 import { bogoSort } from "./Algorithms/bogosort";
 import { mergeSort } from "./Algorithms/mergesort";
 import { shellsort } from "./Algorithms/shellsort";
+import { heapsort } from "./Algorithms/heapsort";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -127,6 +128,11 @@ function CustomizedAccordions({ childToParent }) {
               onClick={() => childToParent(["shellsort", shellsort])}
             >
               <ListItemText primary="Shell sort" />
+            </ListItemButton>
+            <ListItemButton
+              onClick={() => childToParent(["heapsort", heapsort])}
+            >
+              <ListItemText primary="Heap sort" />
             </ListItemButton>
           </List>
         </AccordionDetails>
