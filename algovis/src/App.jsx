@@ -4,33 +4,10 @@ import classes from "./styles";
 import PersistentDrawerLeft from "./sidedrawer";
 import Sketch1 from "./sketch";
 
-import { bubbleSort } from "./Algorithms/bubblesort";
-
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
-import {
-  Box,
-  Paper,
-  Typography,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  CssBaseline,
-  Grid,
-  Toolbar,
-  Container,
-  Drawer,
-  styled,
-  useTheme,
-  IconButton,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import { Margin } from "@mui/icons-material";
+import { Box, Paper, CssBaseline, Grid } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function onChange(newValue) {

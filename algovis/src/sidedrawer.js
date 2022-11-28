@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,7 +17,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useState } from "react";
 import { selectionSort } from "./Algorithms/selectionSort";
-import { bubbleSort } from "./Algorithms/bubblesort";
+import { bubbleSort } from "./Algorithms/bubbleSort";
 import { insertionSort } from "./Algorithms/insertionsort";
 
 const Accordion = styled((props) => (
