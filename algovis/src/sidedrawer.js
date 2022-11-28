@@ -115,12 +115,12 @@ function CustomizedAccordions({ childToParent }) {
               <ListItemText primary="Quick Sort" />
             </ListItemButton>
             <ListItemButton
-              onClick={() => childToParent(["bogoSort", bogoSort])}
+              onClick={() => childToParent(["bogosort", bogoSort])}
             >
               <ListItemText primary="Bogo Sort" />
             </ListItemButton>
             <ListItemButton
-              onClick={() => childToParent(["mergeSort", mergeSort])}
+              onClick={() => childToParent(["mergesort", mergeSort])}
             >
               <ListItemText primary="Merge Sort" />
             </ListItemButton>
