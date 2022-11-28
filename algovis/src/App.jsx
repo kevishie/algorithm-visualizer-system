@@ -52,11 +52,12 @@ const App = () => {
   if(data[0] === "primsAlgorithm"){
   sketch = <Sketch style={classes.canvas} framerate={value}/>;
   }else{
+    //stuff = data[0]+'.js?raw';
     stuff = data[1];
     sketch = <Sketch1 style={classes.canvas} selection={data[0]} framerate={value} button = {clicked} />;
 
   }
-
+  console.log(stuff);
   return (
     <>
       <ThemeProvider theme={darkTheme}>
