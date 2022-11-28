@@ -124,35 +124,18 @@ function CustomizedAccordions({ childToParent }) {
         onChange={handleChange("panel2")}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Searching Algorithms</Typography>
+          <Typography>Graph Algorithms</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <ListItemButton>
-            <ListItemText primary="Sequential Search" />
-          </ListItemButton>
-          <ListItemButton>
-            <ListItemText primary="Binary Search" />
+          <ListItemButton
+              onClick={() => childToParent(["primsAlgorithm"])}
+
+          >
+            <ListItemText primary="Prim's Algorithm" />
           </ListItemButton>
         </AccordionDetails>
       </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Dynamic Programming Algorithms</Typography>
-        </AccordionSummary>
-        <AccordionDetails></AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel4"}
-        onChange={handleChange("panel4")}
-      >
-        <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography>Recursive Algorithms</Typography>
-        </AccordionSummary>
-        <AccordionDetails></AccordionDetails>
-      </Accordion>
+     
     </div>
   );
 }

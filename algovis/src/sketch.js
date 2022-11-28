@@ -7,17 +7,17 @@ let values = [];
 let k = 255;
 let frame = 0;
 let oldSelection;
-
-const drawArray = (p5) => {
+let lastPressed = "";
+const drawArray = (p5, b) => {
   let thisFrame;
   p5.background(25);
-  if (frame !== values.length && typeof frames[frame] !== 'undefined') {
+  
+  if (frame !== values.length && typeof frames[frame] !== 'undefined' && b !== "=") {
     thisFrame = frames[frame];
     frame++;
   } else {
     thisFrame = frames[frame - 1];
   }
-  
   for (let i = 0; i < frames.length; i++) {
     p5.stroke("0");
     p5.fill(k);
@@ -33,12 +33,12 @@ const generateRandomArray = (p5, selection) => {
     values.push(p5.random(p5.height));
   }
   frames = runAlgorithm(selection, values);
- // console.log(selection);
 };
 
 export default (props) => {
   let selection = props.selection;
   let fr = props.framerate;
+  let b = props.button;
   const setup = (p5, App) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
@@ -46,19 +46,42 @@ export default (props) => {
     //width is window width minus (drawer width + editor width)
     p5.createCanvas(p5.windowWidth - 795, 500).parent(App);
     p5.background(25);
-    p5.frameRate(25);
+    p5.frameRate(10);
   };
   const draw = (p5) => {
     p5.resizeCanvas(p5.windowWidth * 0.59, p5.windowHeight * 0.6);
-
     if (selection !== oldSelection) {
       console.log(selection, " ", oldSelection);
       p5.setup();
       generateRandomArray(p5, selection);
       oldSelection = selection;
-    } else {
-      drawArray(p5);
     }
+    if(b !== lastPressed){
+  switch(b){
+    case "=":
+      drawArray(p5, b);
+      break;
+    case ">>":
+      frames = frames.reverse();
+      frame = frames.length - frame;
+      drawArray(p5, b);
+
+      break;
+    case "<<":
+      frames = frames.reverse();
+      frame = frames.length - frame;
+      drawArray(p5, b);
+
+      break;
+    case ">":
+      drawArray(p5);
+
+      break;
+  }
+  lastPressed = b;
+}
+console.log(b);
+    drawArray(p5, b);
     p5.frameRate(fr);
   };
 
