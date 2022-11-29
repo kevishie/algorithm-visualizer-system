@@ -66,7 +66,8 @@ export function information(selection){
             return "Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. \
                     There are many different versions of quickSort that pick pivot in different ways. ";
         case "primsalgorithm":
-            return "Prim's Algorithm info";
+            return "It starts with an empty spanning tree. The idea is to maintain two sets of vertices. The first set contains the vertices already included in the MST, the other set contains the vertices not yet included. At every step, it considers all the edges that connect the two sets and picks the minimum weight edge from these edges. \
+                    After picking the edge, it moves the other endpoint of the edge to the set containing MST. ";
 
     }
 }
