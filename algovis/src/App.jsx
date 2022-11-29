@@ -48,7 +48,7 @@ const App = () => {
     setHeight(editorRef.current.offsetHeight);
   }, []);
   let stuff = "placeholder";
-  let sketch;
+  let sketch = <Sketch style={classes.canvas} framerate={value}/>;;
   if(data[0] === "primsAlgorithm"){
   sketch = <Sketch style={classes.canvas} framerate={value}/>;
   }else{

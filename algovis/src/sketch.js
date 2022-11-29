@@ -61,23 +61,19 @@ export default (props) => {
       switch(b){
         case "=":
           drawArray(p5, b);
-          break;
         case ">>":
           frames = frames.reverse();
           frame = frames.length - frame;
           drawArray(p5, b);
     
-          break;
         case "<<":
           frames = frames.reverse();
           frame = frames.length - frame;
           drawArray(p5, b);
     
-          break;
         case ">":
           drawArray(p5);
     
-          break;
       }
       lastPressed = b;
     }
