@@ -17,3 +17,4 @@ export function selectionSort(array){
     }
 
     export const name = "Selection Sort";
+ 
