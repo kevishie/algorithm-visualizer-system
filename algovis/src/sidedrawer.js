@@ -146,7 +146,7 @@ function CustomizedAccordions({ childToParent }) {
         </AccordionSummary>
         <AccordionDetails>
           <ListItemButton
-              onClick={() => childToParent(["primsAlgorithm"])}
+              onClick={() => childToParent(["primsAlgorithm", "primsalgorithm"])}
 
           >
             <ListItemText primary="Prim's Algorithm" />

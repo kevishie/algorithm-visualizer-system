@@ -82,7 +82,7 @@ const App = () => {
   .then(text => setEText(text));
   // outputs the content of the text file
   }
-  console.log(data[0]);
+  console.log(data[1]);
   return (
     <>
       <ThemeProvider theme={darkTheme}>

@@ -27,7 +27,9 @@ export function runtime(selection){
         case bogoSort:
             return "Runtime: Worst: O(∞) Average: O(N*N!) Best: O(n)"
         case quickSort:
-            return "Runtime: O(NLogN)"
+            return "Runtime: O(NLogN)";
+        case "primsalgorithm":
+            return "Runtime: O(V²)";
     }
 }
 
@@ -62,6 +64,9 @@ export function information(selection){
                      It is based on generate and test paradigm. The algorithm successively generates permutations of its input until it finds one that is sorted."
         case quickSort:
             return "Like Merge Sort, QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. \
-                    There are many different versions of quickSort that pick pivot in different ways. "
+                    There are many different versions of quickSort that pick pivot in different ways. ";
+        case "primsalgorithm":
+            return "Prim's Algorithm info";
+
     }
 }
