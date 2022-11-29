@@ -11,7 +11,8 @@ let lastPressed = "";
 const drawArray = (p5, b) => {
   let thisFrame;
   p5.background(25);
-  if (frame !== frames.length && typeof frames[frame] !== 'undefined' && b !== "=") {    
+  if (frame !== frames.length && typeof frames[frame] !== 'undefined' && b !== "=") { 
+       
     thisFrame = frames[frame];
     frame++;
   } else {
@@ -55,25 +56,30 @@ export default (props) => {
       p5.setup();
       generateRandomArray(p5, selection);
       oldSelection = selection;
+      b = ">";
 
     }
     if(b !== lastPressed){
       switch(b){
         case "=":
           drawArray(p5, b);
+          break;
         case ">>":
           frames = frames.reverse();
           frame = frames.length - frame;
           drawArray(p5, b);
     
+          break;
         case "<<":
           frames = frames.reverse();
           frame = frames.length - frame;
           drawArray(p5, b);
     
+          break;
         case ">":
-          drawArray(p5);
+          drawArray(p5, b);
     
+          break;
       }
       lastPressed = b;
     }

@@ -11,7 +11,7 @@ export default (props) => {
 
     
 	const setup = (p5, App) => {
-        
+        vertices = [];
 		// use parent to render the canvas in this ref
 		// (without that p5 will render the canvas outside of your component)
 
@@ -19,14 +19,12 @@ export default (props) => {
 		p5.createCanvas(p5.windowWidth-(795), 500).parent(App);
 
         for(let i = 0; i < 20; i++){
-            console.log("SetupPrims"); 
             let v = p5.createVector(p5.random(p5.width),p5.random(p5.height));
             vertices.push(v);
         }
 
 	};
      const mousePressed = (p5) => {
-        console.log("mousepressed");
         vertices.splice(0,1);
         let b = p5.createVector(p5.mouseX, p5.mouseY);
         vertices.push(b);
@@ -36,7 +34,6 @@ export default (props) => {
         p5.background(50);
         let reached = [];
         let unreached = [];
-        console.log(vertices);
         for(let i = 0; i < vertices.length; i++){
             unreached.push(vertices[i]);
         }
