@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/algorithm-visualizer-system/static/js/main.b0a772db.js",
+    "main.js": "/algorithm-visualizer-system/static/js/main.d6dc12a2.js",
     "index.html": "/algorithm-visualizer-system/index.html"
   },
   "entrypoints": [
-    "static/js/main.b0a772db.js"
+    "static/js/main.d6dc12a2.js"
   ]
 }
