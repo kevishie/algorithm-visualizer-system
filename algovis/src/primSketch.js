@@ -16,7 +16,7 @@ export default (props) => {
 		// (without that p5 will render the canvas outside of your component)
 
         //width is window width minus (drawer width + editor width)
-		p5.createCanvas(p5.windowWidth-(795), 500).parent(App);
+		p5.createCanvas(p5.windowWidth-250, 500).parent(App);
 
         for(let i = 0; i < 20; i++){
             let v = p5.createVector(p5.random(p5.width),p5.random(p5.height));

@@ -48,36 +48,17 @@ const App = () => {
     setHeight(editorRef.current.offsetHeight);
   }, []);
   let stuff = "placeholder";
-  let sketch = <Sketch style={classes.canvas} framerate={value}/>;;
+  let sketch = <Sketch style={classes.canvas} framerate={value}/>;
+  let editor;
+  let p;
   if(data[0] === "primsAlgorithm"){
   sketch = <Sketch style={classes.canvas} framerate={value}/>;
+    p=12;
   }else{
-    //stuff = data[0]+'.js?raw';
+    p=8;
     stuff = data[1];
     sketch = <Sketch1 style={classes.canvas} selection={data[0]} framerate={value} button = {clicked} />;
-
-  }
-  if(typeof data[0] !== 'undefined'){
-  window.fetch(process.env.PUBLIC_URL+'/Algorithms/'+data[0]+'.js')
-  .then(response => response.text())
-  .then(text => setEText(text));
-  // outputs the content of the text file
-  }
-  return (
-    <>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <PersistentDrawerLeft selectAlgo={selectAlgo} />
-        <main>
-          <div style={classes.root}>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={1}>
-                <Grid item xs={8}>
-                  {sketch}
-                </Grid>
-                <Grid item xs={4}>
-                  <Paper>
-                    <AceEditor
+    editor = <AceEditor
                       ref={editorRef}
                       mode="javascript"
                       theme="monokai"
@@ -93,6 +74,30 @@ const App = () => {
                         enableSnippets: true,
                       }}
                     />
+
+  }
+  if(typeof data[0] !== 'undefined' && data[0] !== "primsAlgorithm"){
+  window.fetch(process.env.PUBLIC_URL+'/Algorithms/'+data[0]+'.js')
+  .then(response => response.text())
+  .then(text => setEText(text));
+  // outputs the content of the text file
+  }
+  console.log(data[0]);
+  return (
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <PersistentDrawerLeft selectAlgo={selectAlgo} />
+        <main>
+          <div style={classes.root}>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={1}>
+                <Grid item xs={p}>
+                  {sketch}
+                </Grid>
+                <Grid item xs={p-4}>
+                  <Paper>
+                    {editor}
                   </Paper>
                 </Grid>
                 <Grid item xs={8}>
